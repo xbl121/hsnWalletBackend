@@ -1,11 +1,12 @@
 package models
 
 import (
-	"github.com/wongyinlong/walletBackend/conf"
 	"go.uber.org/zap"
 	"gopkg.in/mgo.v2"
 	"log"
 	"time"
+
+	"github.com/wongyinlong/walletBackend/conf"
 )
 
 var Session *mgo.Session
@@ -39,12 +40,12 @@ func Insert(db, collection string, docs ...interface{}) error {
 	return c.Insert(docs...)
 }
 
-func FindAll(db, collection string, query, selector, result interface{}) error {
+func FindAll(db string, collection string, query map[string]interface{}, result interface{}) error {
 	ms, c := connect(db, collection)
 	defer ms.Close()
-	return c.Find(query).Select(selector).One(result)
+	return c.Find(query).One(result)
 }
-func FindOne(db, collection string, query, selector, result interface{}) error {
+func FindOne(db, collection string, query map[string]interface{}, selector, result interface{}) error {
 	ms, c := connect(db, collection)
 	defer ms.Close()
 	return c.Find(query).Select(selector).All(result)

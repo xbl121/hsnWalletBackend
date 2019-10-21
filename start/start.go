@@ -15,12 +15,18 @@ func OnStart() error {
 		ReadTimeout:  time.Second * 15,
 		WriteTimeout: time.Second * 15,
 	}
+
 	err := srv.ListenAndServe()
 	return err
 }
 func registeredFunc() *rest.ApiServer {
 	restServer := rest.NewApiServer()
-	s := restServer.Mux.PathPrefix("/api/v1/wallet").Subrouter()
-	wallet.RegisterPublishInfoApi(s)
+	walletUrl := restServer.Mux.PathPrefix("/api/v1/wallet").Subrouter()
+	wallet.RegisterPublishInfoApi(walletUrl)
+	wallet.RegisterGetInfoApi(walletUrl)
+	// other urls
+	//jPushURl := restServer.Mux.PathPrefix("/api/v1/jPush").Subrouter()
+
+
 	return restServer
 }
