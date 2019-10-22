@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func Words(w http.ResponseWriter, r *http.Request) {
+func HistoryEvents(w http.ResponseWriter, r *http.Request) {
 
 	err := r.ParseForm()
 	if err !=nil{
@@ -22,3 +22,5 @@ func Words(w http.ResponseWriter, r *http.Request) {
 
 	//_, _ = w.Write([]byte("hello"))
 }
+
+

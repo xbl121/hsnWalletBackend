@@ -1,11 +1,11 @@
-package wallet
+package backend
 
 import (
 	"github.com/wongyinlong/walletBackend/models/moves"
 	"net/http"
 )
 
-func Events(w http.ResponseWriter, r *http.Request) {
+func PostNotice(w http.ResponseWriter, r *http.Request) {
 
 	err := r.ParseForm()
 	if err !=nil{
@@ -23,7 +23,7 @@ func Events(w http.ResponseWriter, r *http.Request) {
 	//_, _ = w.Write([]byte("hello"))
 }
 
-func PostEvents(w http.ResponseWriter, r *http.Request) {
+func GetNotice(w http.ResponseWriter, r *http.Request) {
 
 	err := r.ParseForm()
 	if err !=nil{
@@ -40,3 +40,4 @@ func PostEvents(w http.ResponseWriter, r *http.Request) {
 
 	//_, _ = w.Write([]byte("hello"))
 }
+

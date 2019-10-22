@@ -8,15 +8,15 @@ import (
 
 func RegisterFrontApi(r *mux.Router) {
 	// 获取助记词
-	r.HandleFunc("/words", wallet.HelpWord).Methods(http.MethodPost)
+	r.HandleFunc("/words", wallet.Words).Methods(http.MethodGet)
 	// 获取首页banner信息
 	r.HandleFunc("/banner", wallet.Banner).Methods(http.MethodGet)
 	// 获取活动信息
-	r.HandleFunc("/event", wallet.Events).Methods(http.MethodGet)
+	r.HandleFunc("/event", wallet.Event).Methods(http.MethodGet)
 	// 获取历史活动信息
-	r.HandleFunc("/historyEvents", wallet.Events).Methods(http.MethodGet)
+	r.HandleFunc("/historyEvents", wallet.HistoryEvents).Methods(http.MethodGet)
 	// 获取通告信息
-	r.HandleFunc("/notice", wallet.Events).Methods(http.MethodGet)
+	r.HandleFunc("/notice", wallet.Notice).Methods(http.MethodGet)
 	// 提交交易查询
 	r.HandleFunc("/tx", wallet.PostTx).Methods(http.MethodPost)
 	// 处理账户和手机的对应关系
