@@ -13,10 +13,6 @@ var Session *mgo.Session
 
 func init() {
 	config := conf.NewConfig()
-	if config.Db.DbString == "" {
-		log.Fatal("dbString is empty")
-		return
-	}
 	dialInfo, _ := mgo.ParseURL(config.Db.DbString)
 	dialInfo.PoolLimit = 50
 	dialInfo.Timeout = time.Minute * 1

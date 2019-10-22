@@ -17,7 +17,6 @@ func Banner(w http.ResponseWriter, r *http.Request) {
 	//get data form db
 	helpWordsList.GetHelpWords(word)
 	w.WriteHeader(http.StatusOK)
-	w.Header().Set("Content-Type","application/Json")
 	_, _ = w.Write([]byte("hello"))
 
 	//_, _ = w.Write([]byte("hello"))
